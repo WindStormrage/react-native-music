@@ -1,0 +1,3 @@
+rootProject.name = 'reactNativeMusic'
+
+include ':app'
