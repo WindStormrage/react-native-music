@@ -6,18 +6,22 @@
 
 import React, { Component } from 'react';
 import {
-  View
+	AppRegistry,
+  View,
+	Text
 } from 'react-native';
-
+import Music from './pages/Music.js'
 
 
 export default class App extends Component<{}> {
   render() {
     return (
       <View>
-				hello
+        <Music />
       </View>
     );
   }
 }
 
+
+AppRegistry.registerComponent('AwesomeProject', () => App);
