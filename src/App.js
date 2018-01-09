@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import {
 	AppRegistry,
   View,
-	Text
+	StatusBar
 } from 'react-native';
 import Music from './pages/Music.js'
 
@@ -17,6 +17,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View>
+        <StatusBar hidden={false} />
         <Music />
       </View>
     );

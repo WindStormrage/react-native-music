@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import {
+	StatusBar,
 	View,
 	Image,
 	Text
@@ -33,17 +34,18 @@ export default class MusicHead extends Component<{}> {
 }
 
 const flex = {
-	marginTop: 5,
+	marginTop: StatusBar.currentHeight,
 	flexDirection: 'row',
 	justifyContent: 'space-between',
 	alignItems: 'center',
-	height: 80,
+	height: 70,
 	//backgroundColor: '#666'
 };
 
 const center = {
 	marginLeft: 10,
-	height: 50
+	height: 50,
+	justifyContent: 'center'
 }
 
 const back = {
