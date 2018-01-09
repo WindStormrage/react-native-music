@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import {
+	Dimensions,
 	View,
 	Text
 } from 'react-native';
@@ -16,10 +17,10 @@ import MusicPlay from './../components/MusicPlay.js';
 export default class Music extends Component<{}> {
 	render() {
 		return (
-			<View style={{justifyContent: 'center'}}>
+			<View style={{justifyContent: 'center', backgroundColor: '#aaa'}}>
 				<Head />
-				<Poster/>
-				<Lrc/>
+				<Poster />
+				<Lrc />
 				<MusicPlay />
 			</View>
 		);

@@ -9,6 +9,8 @@ import {
 	Image
 } from 'react-native';
 
+import {getWidth, getHeight} from "../util/size";
+
 
 export default class Poster extends Component<{}> {
 	render() {
@@ -16,7 +18,7 @@ export default class Poster extends Component<{}> {
 			<View style={{alignItems: 'center'}}>
 				<View style={main}>
 					<Image
-						style={{height: 350, width: 350}}
+						style={{height: getHeight(250), width: getWidth(250)}}
 						source={{uri: 'http://pic.58pic.com/58pic/15/53/09/54M58PIC2BX_1024.png'}}
 					/>
 				</View>
@@ -27,10 +29,11 @@ export default class Poster extends Component<{}> {
 
 
 const main = {
-	height: 350,
-	width: 350,
-	borderRadius: 175,
+	height: getHeight(250),
+	width: getWidth(250),
+	borderRadius: 1000,
 	backgroundColor: '#666',
-	marginTop: 50,
-	overflow: 'hidden'
+	marginTop: getHeight(30),
+	overflow: 'hidden',
+
 };

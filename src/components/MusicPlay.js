@@ -9,6 +9,7 @@ import {
 	Image
 } from 'react-native';
 
+import {getWidth, getHeight} from "../util/size";
 
 export default class MusicPlay extends Component<{}> {
 	render() {
@@ -50,7 +51,8 @@ export default class MusicPlay extends Component<{}> {
 }
 
 const main = {
-	marginTop: 20
+	marginTop: 20,
+	//flex: 1
 };
 
 const progress = {
@@ -82,6 +84,6 @@ const component = {
 };
 
 const image = {
-	height: 50,
-	width: 50
+	height: getHeight(40),
+	width: getWidth(40)
 }

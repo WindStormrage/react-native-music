@@ -4,37 +4,41 @@
 
 import React, { Component } from 'react';
 import {
+	PixelRatio,
 	View,
 	Text,
 	Image
 } from 'react-native';
 
+import {getWidth, getHeight} from "../util/size";
 
 export default class Lrc extends Component<{}> {
 	render() {
+		let pr = PixelRatio.get();
 		return (
 			<View style={main}>
-				<Text style={text}>歌词歌词歌词歌词歌词</Text>
-				<Text style={text}>歌词歌词歌词歌词歌词歌词歌</Text>
-				<Text style={text}>歌词歌词歌词歌词歌词</Text>
-				<Text style={text}>歌词歌词歌词歌词歌词词</Text>
-				<Text style={text}>歌词歌词歌词歌词歌词歌词歌</Text>
+				<Text style={text}>window.PixelRatio = {pr}</Text>
+				<Text style={text}>歌词歌词歌词歌词歌词歌词歌{pr}</Text>
+				<Text style={text}>歌词歌词歌词歌词歌词{pr}</Text>
+				<Text style={text}>歌词歌词歌词歌词歌词词{pr}</Text>
+				<Text style={text}>歌词歌词歌词歌词歌词歌词歌{pr}</Text>
 			</View>
 		);
 	}
 }
 
 const text = {
-	fontSize: 20,
+	fontSize: getHeight(15),
 	//color: '#fff',
 	zIndex: -1
 }
 
 const main = {
-	height: 80,
+	height: getHeight(57),
 	//backgroundColor: '#666',
-	marginTop: 50,
+	marginTop: getHeight(30),
 	alignItems: 'center',
 	justifyContent: 'center',
-	overflow: 'hidden'
+	overflow: 'hidden',
+	//flex: 2
 };

@@ -1,4 +1,4 @@
-import Dimensions from 'react-native'
+import {Dimensions}from 'react-native'
 
 
 const BASE_WIN_HEIGHT = 667;
@@ -13,7 +13,7 @@ export function getHeight(h) {
 		this.height = height;
 		this.width = width;
 	}
-	return h / 2 * (this.height / BASE_WIN_HEIGHT);
+	return h  * (this.height / BASE_WIN_HEIGHT);
 }
 
 /** 根据实际屏幕尺寸转换对应的像素宽度 */
@@ -23,6 +23,6 @@ export function getWidth(w) {
 		this.height = height;
 		this.width = width;
 	}
-	return w / 2 * (this.width / BASE_WIN_WIDTH);
+	return w  * (this.width / BASE_WIN_WIDTH);
 }
 
