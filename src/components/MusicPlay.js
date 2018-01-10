@@ -52,35 +52,38 @@ export default class MusicPlay extends Component<{}> {
 
 const main = {
 	marginTop: 20,
-	//flex: 1
+	flex: 0,
+	//backgroundColor: 'yellow'
 };
 
 const progress = {
-	height: 50,
+	height: getHeight(50),
 	flexDirection: 'row',
 	alignItems: 'center',
 	justifyContent: 'space-around',
-	margin: 20
+	//backgroundColor: 'red'
 };
 
 const line1 = {
-	width: 350,
+	width: getWidth(270),
 	backgroundColor: 'red',
-	height: 1
+	height: getHeight(1)
 };
 const line2 = {
-	width: 100,
+	width: getWidth(50),
 	backgroundColor: 'blue',
-	height: 1,
-	marginTop: -1
+	height: getHeight(1),
+	marginTop: getHeight(-1)
 };
 
 
 const component = {
+	//backgroundColor: 'red',
 	flexDirection: 'row',
 	alignItems: 'center',
 	justifyContent: 'space-around',
-	marginTop: 10
+	paddingTop: getHeight(10),
+	paddingBottom: getHeight(25)
 };
 
 const image = {

@@ -17,7 +17,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View>
-        <StatusBar hidden={false} />
+        <StatusBar hidden={true} />
         <Music />
       </View>
     );

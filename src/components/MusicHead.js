@@ -34,12 +34,14 @@ export default class MusicHead extends Component<{}> {
 }
 
 const flex = {
-	marginTop: StatusBar.currentHeight,
+	marginTop: getHeight(15),
+	//marginTop: StatusBar.currentHeight,
 	flexDirection: 'row',
 	justifyContent: 'space-between',
 	alignItems: 'center',
 	height: getHeight(40),
-	//backgroundColor: '#666'
+	//backgroundColor: '#666',
+	flex: 0
 };
 
 const center = {

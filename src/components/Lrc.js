@@ -17,11 +17,9 @@ export default class Lrc extends Component<{}> {
 		let pr = PixelRatio.get();
 		return (
 			<View style={main}>
-				<Text style={text}>window.PixelRatio = {pr}</Text>
 				<Text style={text}>歌词歌词歌词歌词歌词歌词歌{pr}</Text>
 				<Text style={text}>歌词歌词歌词歌词歌词{pr}</Text>
 				<Text style={text}>歌词歌词歌词歌词歌词词{pr}</Text>
-				<Text style={text}>歌词歌词歌词歌词歌词歌词歌{pr}</Text>
 			</View>
 		);
 	}
@@ -34,11 +32,10 @@ const text = {
 }
 
 const main = {
-	height: getHeight(57),
-	//backgroundColor: '#666',
-	marginTop: getHeight(30),
+	height: getHeight(80),
+	marginTop: getHeight(20),
 	alignItems: 'center',
 	justifyContent: 'center',
-	overflow: 'hidden',
-	//flex: 2
+	//backgroundColor:'yellow',
+	flex: 0
 };
