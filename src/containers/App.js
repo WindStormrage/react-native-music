@@ -10,7 +10,7 @@ import {
   View,
 	StatusBar
 } from 'react-native';
-import Music from './pages/Music.js'
+import Music from '../pages/Music.js'
 
 
 export default class App extends Component<{}> {

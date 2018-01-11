@@ -6,13 +6,24 @@ import React, { Component } from 'react';
 import {
 	View,
 	Text,
-	Image
+	Image,
+	Alert,
+	TouchableOpacity
 } from 'react-native';
 
 import {getWidth, getHeight} from "../util/size";
 
 export default class MusicPlay extends Component<{}> {
+
+	state = {
+		isplay: true
+	};
+
+
 	render() {
+
+		const {onPlay} = this.props;
+
 		return (
 			<View style={main}>
 				<View style={progress}>
@@ -32,10 +43,20 @@ export default class MusicPlay extends Component<{}> {
 						style={image}
 						source={require('./../static/previous.png')}
 					/>
-					<Image
-						style={image}
-						source={require('./../static/play.png')}
-					/>
+					<TouchableOpacity
+						onPress={() => {
+							let a = !this.state.isplay;
+							this.setState({
+								isplay : a
+							});
+							Alert.alert('温馨提醒',a.toString());
+							onPlay;
+						}}>
+						<Image
+							style={image}
+							source={this.state.isplay?require('./../static/start.png'):require('./../static/play.png')}
+						/>
+					</TouchableOpacity>
 					<Image
 						style={image}
 						source={require('./../static/next.png')}
@@ -49,6 +70,7 @@ export default class MusicPlay extends Component<{}> {
 		);
 	}
 }
+
 
 const main = {
 	marginTop: 20,
