@@ -2,7 +2,7 @@ package com.reactnativemusic;
 
 import com.facebook.react.ReactActivity;
 
-import com.brentvatne.react.ReactVideoPackage;
+//import com.brentvatne.react.ReactVideoPackage;
 
 public class MainActivity extends ReactActivity {
 
@@ -12,7 +12,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        new ReactVideoPackage()
+        //new ReactVideoPackage()
         return "reactNativeMusic";
     }
 }
