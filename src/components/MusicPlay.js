@@ -8,24 +8,38 @@ import {
 	Text,
 	Image,
 	Alert,
-	TouchableOpacity
+	TouchableOpacity,
+	TouchableWithoutFeedback,
+	PixelRatio
 } from 'react-native';
 
 import {getWidth, getHeight} from "../util/size";
 
-export default class MusicPlay extends Component<{}> {
+import {toTime, toInt} from "./../util/HandlingTime.js"
 
+export default class MusicPlay extends Component<{}> {
 
 	render() {
 		return (
 			<View style={main}>
 				<View style={progress}>
-					<Text>0:00</Text>
-					<View>
-						<View style={line1}></View>
-						<View style={line2}></View>
-					</View>
-					<Text>0:00</Text>
+					<Text>{toTime(this.props.time)}</Text>
+					<TouchableWithoutFeedback
+						onPressOut={(e)=>{
+							let time = e.nativeEvent.locationX.toString()/getWidth(270)*toInt(this.props.allTime);
+							this.props.setTime(time)
+						}}>
+						<View>
+							<View style={line1}>
+							</View>
+							<View style={{width: getWidth(parseInt(this.props.time/toInt(this.props.allTime)*270)),
+								backgroundColor: 'blue',
+								height: getHeight(1),
+								marginTop: getHeight(-1)}}>
+							</View>
+						</View>
+					</TouchableWithoutFeedback>
+					<Text>{this.props.allTime}</Text>
 				</View>
 				<View style={component}>
 					<Image
@@ -81,10 +95,7 @@ const line1 = {
 	height: getHeight(1)
 };
 const line2 = {
-	width: getWidth(50),
-	backgroundColor: 'blue',
-	height: getHeight(1),
-	marginTop: getHeight(-1)
+
 };
 
 

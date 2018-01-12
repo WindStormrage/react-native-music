@@ -7,20 +7,24 @@ import {
 	ScrollView,
 	Dimensions,
 	View,
-	Alert,
-	StyleSheet
+	FlatList,
+	StyleSheet,
+	Text,
+	Alert
 } from 'react-native';
 import Head from './../components/MusicHead.js';
 import Poster from './../components/Poster.js';
 import Lrc from './../components/Lrc.js';
 import MusicPlay from './../components/MusicPlay.js';
+import PlayList from './../components/PlayList.js';
 
 import Video from 'react-native-video';
 
 export default class Music extends Component<{}> {
 
 	state = {
-		isplay: false
+		isplay: false,
+		time: 0
 	};
 
 	constructor(props) {
@@ -28,8 +32,14 @@ export default class Music extends Component<{}> {
 		this.onPlay = this.onPlay.bind(this);
 	}
 
+	//更改播放暂停状态
 	onPlay(change){
 		this.setState({isplay: change});
+	}
+
+	//点击进度条设置时间
+	setTime(time){
+		Alert.alert(time.toString())
 	}
 
 	render() {
@@ -40,13 +50,21 @@ export default class Music extends Component<{}> {
 					       repeat={true}
 					       style={styles.backgroundVideo}
 					       paused={this.state.isplay}
+					       onProgress={(data)=>{
+						       this.setState({time: data.currentTime});
+					       }}
 					/>
 					<Head />
 					<Poster />
 					<Lrc />
 					<MusicPlay
 						isplay={this.state.isplay}
-						onPlayChange={this.onPlay}/>
+						onPlayChange={this.onPlay}
+						time={this.state.time}
+						allTime={'4:02'}
+						setTime={this.setTime}
+					/>
+					{/*<PlayList />*/}
 				</View>
 			</ScrollView>
 		);
@@ -72,7 +90,7 @@ const  styles = StyleSheet.create({
 
 
 
-// source={{uri: "http://fs.w.kugou.com/201801101841/ad3cc0283e306da52d456e4f676acabd/G121/M09/17/09/uQ0DAFoqk1-AQqDuADs8dWUtoJY854.mp3"}} // 视频的URL地址，或者本地地址，都可以.
+// source={{uri: ""}} // 视频的URL地址，或者本地地址，都可以.
 // rate={1.0}                   // 控制暂停/播放，0 代表暂停paused, 1代表播放normal.
 // volume={1.0}                 // 声音的放大倍数，0 代表没有声音，就是静音muted, 1 代表正常音量 normal，更大的数字表示放大的倍数
 // muted={false}                // true代表静音，默认为false.
