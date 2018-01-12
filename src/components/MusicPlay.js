@@ -43,7 +43,7 @@ export default class MusicPlay extends Component<{}> {
 						}}>
 						<Image
 							style={image}
-							source={this.props.isplay?require('./../static/start.png'):require('./../static/play.png')}
+							source={this.props.isplay?require('./../static/play.png'):require('./../static/start.png')}
 						/>
 					</TouchableOpacity>
 					<Image

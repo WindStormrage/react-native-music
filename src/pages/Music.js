@@ -7,6 +7,7 @@ import {
 	ScrollView,
 	Dimensions,
 	View,
+	Alert,
 	StyleSheet
 } from 'react-native';
 import Head from './../components/MusicHead.js';
@@ -19,7 +20,7 @@ import Video from 'react-native-video';
 export default class Music extends Component<{}> {
 
 	state = {
-		isplay: 1.0
+		isplay: false
 	};
 
 	constructor(props) {
@@ -28,7 +29,7 @@ export default class Music extends Component<{}> {
 	}
 
 	onPlay(change){
-		this.setState({isplay: change===false?0.0:1.0});
+		this.setState({isplay: change});
 	}
 
 	render() {
@@ -37,8 +38,8 @@ export default class Music extends Component<{}> {
 				<View style={styles.main}>
 					<Video source={{uri: "http://fs.w.kugou.com/201801111854/7eaafed62138957cc4814bc08a1b75de/G121/M09/17/09/uQ0DAFoqk1-AQqDuADs8dWUtoJY854.mp3"}}
 					       repeat={true}
-					       rate= {this.state.isplay}
 					       style={styles.backgroundVideo}
+					       paused={this.state.isplay}
 					/>
 					<Head />
 					<Poster />
