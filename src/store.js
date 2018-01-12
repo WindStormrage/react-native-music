@@ -8,9 +8,27 @@
  * 4.通过 subscriber(listener)注册监听器
  */
 
-const store = {
+import {
+	createStore
+} from 'redux';
 
-};
+import reducers from './reducers';
+
+import actions from './actions'
+
+export const store = createStore(reducers);
 
 
-export default store;
+
+
+export function mapStateToProps(state) {
+	return { isplay: state.isplay }
+}
+
+
+ //映射Redux actions到组件的属性
+export function mapDispatchToProps(dispatch){
+	return{
+		onPlay:()=>dispatch(actions.MusicAction),
+	}
+}

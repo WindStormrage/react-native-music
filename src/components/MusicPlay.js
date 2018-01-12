@@ -15,15 +15,8 @@ import {getWidth, getHeight} from "../util/size";
 
 export default class MusicPlay extends Component<{}> {
 
-	state = {
-		isplay: true
-	};
-
 
 	render() {
-
-		const {onPlay} = this.props;
-
 		return (
 			<View style={main}>
 				<View style={progress}>
@@ -44,17 +37,13 @@ export default class MusicPlay extends Component<{}> {
 						source={require('./../static/previous.png')}
 					/>
 					<TouchableOpacity
-						onPress={() => {
-							let a = !this.state.isplay;
-							this.setState({
-								isplay : a
-							});
-							Alert.alert('温馨提醒',a.toString());
-							onPlay;
+						onPress={()=>{
+							let a = !this.props.isplay;
+							this.props.onPlayChange(a)
 						}}>
 						<Image
 							style={image}
-							source={this.state.isplay?require('./../static/start.png'):require('./../static/play.png')}
+							source={this.props.isplay?require('./../static/start.png'):require('./../static/play.png')}
 						/>
 					</TouchableOpacity>
 					<Image

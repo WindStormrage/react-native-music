@@ -17,17 +17,35 @@ import MusicPlay from './../components/MusicPlay.js';
 import Video from 'react-native-video';
 
 export default class Music extends Component<{}> {
+
+	state = {
+		isplay: 1.0
+	};
+
+	constructor(props) {
+		super(props);
+		this.onPlay = this.onPlay.bind(this);
+	}
+
+	onPlay(change){
+		this.setState({isplay: change===false?0.0:1.0});
+	}
+
 	render() {
 		return (
 			<ScrollView>
 				<View style={styles.main}>
 					<Video source={{uri: "http://fs.w.kugou.com/201801111854/7eaafed62138957cc4814bc08a1b75de/G121/M09/17/09/uQ0DAFoqk1-AQqDuADs8dWUtoJY854.mp3"}}
 					       repeat={true}
-					       style={styles.backgroundVideo} />
+					       rate= {this.state.isplay}
+					       style={styles.backgroundVideo}
+					/>
 					<Head />
 					<Poster />
 					<Lrc />
-					<MusicPlay />
+					<MusicPlay
+						isplay={this.state.isplay}
+						onPlayChange={this.onPlay}/>
 				</View>
 			</ScrollView>
 		);
