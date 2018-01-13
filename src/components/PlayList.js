@@ -28,8 +28,8 @@ export default class Lrc extends Component<{}> {
 					<View style={{flexDirection: 'row',alignItems:'center'}}>
 						<Image
 							style={styles.type}
-							source={require('./../static/random.png')}/>
-						<Text style={styles.titleType}>随机播放（2）</Text>
+							source={require('./../static/order.png')}/>
+						<Text style={styles.titleType}>顺序播放（2）</Text>
 					</View>
 					<Image
 						style={styles.del}
