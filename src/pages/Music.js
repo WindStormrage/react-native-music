@@ -24,12 +24,35 @@ export default class Music extends Component<{}> {
 
 	state = {
 		isplay: false,
-		time: 0
+		time: 0,
+		now: 0,
+		musicList: [
+			{
+				songName: 'Forever Love',
+				songAuthor: 'guanmac',
+				songUrl: 'http://mr3.doubanio.com/90c83ceac299f35c1865cb475b7cdad8/0/fm/song/p771299_128k.mp4',
+				time: '9:34'
+			},
+			{
+				songName: '宠爱',
+				songAuthor: '小胖',
+				songUrl: 'http://mr3.doubanio.com/ac3a15091649c03c39e20cef9a6f2eb0/0/fm/song/p1380679_128k.mp4',
+				time: '4:00'
+			},
+			{
+				songName: '风继续吹',
+				songAuthor: '张国荣',
+				songUrl: 'http://mr3.doubanio.com/a0218d365b0a6b24d427fbc3f3a5b4e4/1/fm/song/p1563358_128k.mp4',
+				time: '4:02'
+
+			}
+		]
 	};
 
 	constructor(props) {
 		super(props);
 		this.onPlay = this.onPlay.bind(this);
+		this.setNow = this.setNow.bind(this);
 	}
 
 	//更改播放暂停状态
@@ -42,11 +65,17 @@ export default class Music extends Component<{}> {
 		Alert.alert(time.toString())
 	}
 
+	//设置当前播放的歌曲
+	setNow(now, that){
+		that.setState({now: now})
+	}
+
+
 	render() {
 		return (
 			<ScrollView>
 				<View style={styles.main}>
-					<Video source={{uri: "http://fs.w.kugou.com/201801130843/dc7ff4338d773a41d39d3884f81f120f/G121/M09/17/09/uQ0DAFoqk1-AQqDuADs8dWUtoJY854.mp3"}}
+					<Video source={{uri: this.state.musicList[this.state.now].songUrl}}
 					       repeat={true}
 					       style={styles.backgroundVideo}
 					       paused={this.state.isplay}
@@ -62,10 +91,14 @@ export default class Music extends Component<{}> {
 						isplay={this.state.isplay}
 						onPlayChange={this.onPlay}
 						time={this.state.time}
-						allTime={'4:02'}
+						allTime={this.state.musicList[this.state.now].time}
 						setTime={this.setTime}
 					/>
-					<PlayList />
+					<PlayList
+						musicList={this.state.musicList}
+						onSetNow={this.setNow}
+						that={this}
+					/>
 				</View>
 			</ScrollView>
 		);

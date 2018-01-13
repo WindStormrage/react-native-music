@@ -9,8 +9,8 @@ import {
 	Text,
 	FlatList,
 	StyleSheet,
-	Button,
-	Image
+	Image,
+	TouchableOpacity,
 } from 'react-native';
 
 import {getWidth, getHeight} from "../util/size";
@@ -36,26 +36,31 @@ export default class Lrc extends Component<{}> {
 						source={require('./../static/delete.png')}/>
 				</View>
 				<FlatList
-					data={[{name: '歌曲名字名字', songer: '歌手名'}, {name: '歌曲名字名字', songer: '歌手名'}, {name: '歌曲名字名字', songer: '歌手名'}]}
+					data={this.props.musicList}
 					renderItem={({item, index}) =>
-						<View style={styles.list}>
-							<View style={styles.text}>
-								<Text style={styles.name}>{item.name}</Text>
-								<Text style={styles.songer}>{item.songer}</Text>
+						<TouchableOpacity onPress={()=>{
+							this.props.onSetNow(index, this.props.that)
+						}}>
+							<View style={styles.list}>
+								<View style={styles.text}>
+									<Text style={styles.name}>{item.songName}</Text>
+									<Text style={styles.songer}>{item.songAuthor}</Text>
+								</View>
+								<View style={styles.icon}>
+									<Image
+										style={styles.heart}
+										source={require('./../static/heart.png')}
+									/>
+									<Image
+										style={styles.heart}
+										source={require('./../static/fork.png')}
+									/>
+								</View>
 							</View>
-							<View style={styles.icon}>
-								<Image
-									style={styles.heart}
-									source={require('./../static/heart.png')}
-								/>
-								<Image
-									style={styles.heart}
-									source={require('./../static/fork.png')}
-								/>
-							</View>
-						</View>
+						</TouchableOpacity>
 					}
 					ItemSeparatorComponent={line}
+
 				/>
 			</View>
 
