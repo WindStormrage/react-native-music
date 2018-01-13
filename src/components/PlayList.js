@@ -8,26 +8,113 @@ import {
 	View,
 	Text,
 	FlatList,
-	StyleSheet
+	StyleSheet,
+	Button,
+	Image
 } from 'react-native';
 
+import {getWidth, getHeight} from "../util/size";
+
+import line from './line.js';
 
 export default class Lrc extends Component<{}> {
+
+
 	render() {
+
 		return (
-			<View style={styles.main}>
+			<View>
+				<View style={styles.title}>
+					<View style={{flexDirection: 'row',alignItems:'center'}}>
+						<Image
+							style={styles.type}
+							source={require('./../static/random.png')}/>
+						<Text style={styles.titleType}>随机播放（2）</Text>
+					</View>
+					<Image
+						style={styles.del}
+						source={require('./../static/delete.png')}/>
+				</View>
 				<FlatList
-					style={{backgroundColor:'red', flex:0}}
-					data={[{key: 'a'}, {key: 'b'}, {key: 'b'}]}
-					renderItem={({item}) => <Text>{item.key}</Text>}
+					data={[{name: '歌曲名字名字', songer: '歌手名'}, {name: '歌曲名字名字', songer: '歌手名'}, {name: '歌曲名字名字', songer: '歌手名'}]}
+					renderItem={({item, index}) =>
+						<View style={styles.list}>
+							<View style={styles.text}>
+								<Text style={styles.name}>{item.name}</Text>
+								<Text style={styles.songer}>{item.songer}</Text>
+							</View>
+							<View style={styles.icon}>
+								<Image
+									style={styles.heart}
+									source={require('./../static/heart.png')}
+								/>
+								<Image
+									style={styles.heart}
+									source={require('./../static/fork.png')}
+								/>
+							</View>
+						</View>
+					}
+					ItemSeparatorComponent={line}
 				/>
 			</View>
+
+
+
 		);
 	}
 }
 
 const  styles = StyleSheet.create({
-	main: {
-
+	heart: {
+		marginRight: getWidth(30),
+		height: getHeight(20),
+		width: getWidth(20),
 	},
-});
+	del:{
+		height: getHeight(17),
+		width: getWidth(17),
+		marginRight: getWidth(20)
+	},
+	type:{
+		height: getHeight(17),
+		width: getWidth(17),
+		marginLeft: getWidth(20)
+	},
+	titleType:{
+		fontSize: getWidth(15),
+		marginLeft: getWidth(15)
+	},
+	title:{
+		height: getHeight(50),
+		alignItems:'center',
+		borderBottomWidth: getWidth(1),
+		borderBottomColor: '#ccc',
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	list:{
+		height: getHeight(50),
+		alignItems: 'center',
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	text:{
+		alignItems: 'center',
+		flexDirection: 'row'
+	},
+	icon: {
+		alignItems: 'center',
+		flexDirection: 'row'
+	},
+	name:{
+		fontSize:getWidth(15),
+		marginLeft: getWidth(15)
+	},
+	songer:{
+		fontSize:getWidth(10),
+		marginLeft: getWidth(10),
+		paddingTop: getHeight(3),
+		color: '#666'
+	}
+})

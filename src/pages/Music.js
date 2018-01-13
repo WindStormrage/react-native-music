@@ -46,17 +46,18 @@ export default class Music extends Component<{}> {
 		return (
 			<ScrollView>
 				<View style={styles.main}>
-					<Video source={{uri: "http://fs.w.kugou.com/201801111854/7eaafed62138957cc4814bc08a1b75de/G121/M09/17/09/uQ0DAFoqk1-AQqDuADs8dWUtoJY854.mp3"}}
+					<Video source={{uri: "http://fs.w.kugou.com/201801130843/dc7ff4338d773a41d39d3884f81f120f/G121/M09/17/09/uQ0DAFoqk1-AQqDuADs8dWUtoJY854.mp3"}}
 					       repeat={true}
 					       style={styles.backgroundVideo}
 					       paused={this.state.isplay}
 					       onProgress={(data)=>{
 						       this.setState({time: data.currentTime});
 					       }}
+					       playInBackground={true}
 					/>
-					<Head />
-					<Poster />
-					<Lrc />
+					{/*<Head />*/}
+					{/*<Poster />*/}
+					{/*<Lrc />*/}
 					<MusicPlay
 						isplay={this.state.isplay}
 						onPlayChange={this.onPlay}
@@ -64,7 +65,7 @@ export default class Music extends Component<{}> {
 						allTime={'4:02'}
 						setTime={this.setTime}
 					/>
-					{/*<PlayList />*/}
+					<PlayList />
 				</View>
 			</ScrollView>
 		);
