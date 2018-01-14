@@ -21,8 +21,8 @@ export default class MusicHead extends Component<{}> {
 					source={require('./../static/back-black.png')}
 				/>
 				<View style={center}>
-					<Text style={{fontSize: getHeight(18)}}>歌名歌名</Text>
-					<Text style={{fontSize: getHeight(10),textAlign: 'center'}}>歌手歌手</Text>
+					<Text style={{fontSize: getHeight(18)}}>{this.props.name}</Text>
+					<Text style={{fontSize: getHeight(10),textAlign: 'center'}}>{this.props.author}</Text>
 				</View>
 				<Image
 					style={heart}
