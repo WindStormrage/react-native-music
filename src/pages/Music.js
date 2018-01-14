@@ -69,6 +69,15 @@ export default class Music extends Component<{}> {
 	setNow(now, that){
 		that.setState({now: now})
 	}
+	//当视频播放完毕后的回调
+	onEnd(){
+		//顺序播放
+		// if(this.state.now+2>this.state.musicList.length){
+		// 	this.setState({now: 0})
+		// }else{
+		// 	this.setState({now: this.state.now+1})
+		// }
+	}
 
 
 	render() {
@@ -76,15 +85,19 @@ export default class Music extends Component<{}> {
 			<ScrollView>
 				<View style={styles.main}>
 					<Video source={{uri: this.state.musicList[this.state.now].songUrl}}
-					       repeat={true}
+					       repeat={false}
 					       style={styles.backgroundVideo}
 					       paused={this.state.isplay}
 					       onProgress={(data)=>{
 						       this.setState({time: data.currentTime});
 					       }}
 					       playInBackground={true}
+					       //onEnd={this.onEnd()}
 					/>
-					{/*<Head />*/}
+					<Head
+						name={this.state.musicList[this.state.now].songName}
+						author={this.state.musicList[this.state.now].songAuthor}
+					/>
 					{/*<Poster />*/}
 					{/*<Lrc />*/}
 					<MusicPlay

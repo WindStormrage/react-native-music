@@ -44,7 +44,7 @@ export default class MusicPlay extends Component<{}> {
 				<View style={component}>
 					<Image
 						style={image}
-						source={require('./../static/random.png')}
+						source={require('./../static/order.png')}
 					/>
 					<Image
 						style={image}
