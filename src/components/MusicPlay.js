@@ -90,10 +90,15 @@ export default class MusicPlay extends Component<{}> {
 						/>
 					</TouchableOpacity>
 					{/*播放列表*/}
-					<Image
-						style={image}
-						source={require('./../static/list.png')}
-					/>
+					<TouchableOpacity
+						onPress={()=>{
+							this.props.onList(this.props.that)
+						}}>
+						<Image
+							style={image}
+							source={require('./../static/list.png')}
+						/>
+					</TouchableOpacity>
 				</View>
 			</View>
 		);

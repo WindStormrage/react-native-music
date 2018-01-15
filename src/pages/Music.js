@@ -24,11 +24,17 @@ import {toInt} from './../util/HandlingTime'
 
 export default class Music extends Component<{}> {
 
+
+
 	state = {
 		isplay: false,
 		time: 0,
 		now: 0,
 		nowType: 0,
+		showPoster: true,
+		showLrc: true,
+		showList: false,
+		show: true,
 		musicList: [
 			{
 				songName: '风继续吹',
@@ -122,6 +128,7 @@ export default class Music extends Component<{}> {
 		}
 	}
 
+	//点击类型
 	onType(that){
 		let nowType = that.state.nowType;
 		if(nowType > 2){
@@ -131,7 +138,27 @@ export default class Music extends Component<{}> {
 		}
 	}
 
+	//点击列表
+	onList(that){
+		let showPoster= that.state.showPoster;
+		let	showLrc= that.state.showLrc;
+		let	showList= that.state.showList;
+
+		that.setState({
+			showPoster: !showPoster,
+			showLrc: !showLrc,
+			showList: !showList,
+		})
+	}
+
 	render() {
+
+		//var Poster = this.state.showPoster ? <Poster /> : null;
+		//var Lrc = this.state.showLrc ? <Lrc /> : null;
+		var v = this.state.show ? <Text>待显示的内容</Text> : null;    // 菜单
+
+
+
 		return (
 			<ScrollView>
 				<View style={styles.main}>
@@ -149,8 +176,8 @@ export default class Music extends Component<{}> {
 						name={this.state.musicList[this.state.now].songName}
 						author={this.state.musicList[this.state.now].songAuthor}
 					/>
-					{/*<Poster />*/}
-					{/*<Lrc />*/}
+					{this.state.showPoster ? <Poster /> : null}
+					{this.state.showLrc ? <Lrc /> : null}
 					<MusicPlay
 						isplay={this.state.isplay}
 						onPlayChange={this.onPlay}
@@ -161,14 +188,15 @@ export default class Music extends Component<{}> {
 						onPrevious={this.onPrevious}
 						onType={this.onType}
 						nowType={this.state.nowType}
+						onList={this.onList}
 						that={this}
 					/>
-					<PlayList
-						musicList={this.state.musicList}
-						onSetNow={this.setNow}
-						nowType={this.state.nowType}
-						that={this}
-					/>
+					{this.state.showList ?
+						<PlayList
+							musicList={this.state.musicList}
+							onSetNow={this.setNow}
+							nowType={this.state.nowType}
+							that={this} /> : null}
 				</View>
 			</ScrollView>
 		);
