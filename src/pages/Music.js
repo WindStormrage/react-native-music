@@ -20,6 +20,8 @@ import PlayList from './../components/PlayList.js';
 
 import Video from 'react-native-video';
 
+import {toInt} from './../util/HandlingTime'
+
 export default class Music extends Component<{}> {
 
 	state = {
@@ -68,15 +70,22 @@ export default class Music extends Component<{}> {
 	//设置当前播放的歌曲
 	setNow(now, that){
 		that.setState({now: now})
+		//设置一下进度条从最开始开始
 	}
 	//当视频播放完毕后的回调
 	onEnd(){
 		//顺序播放
-		// if(this.state.now+2>this.state.musicList.length){
-		// 	this.setState({now: 0})
-		// }else{
-		// 	this.setState({now: this.state.now+1})
-		// }
+		let now = this.state.now;
+		let long = this.state.musicList.length;
+		//如果播放完了
+		if(this.state.time >= toInt(this.state.musicList[this.state.now].time)){
+			//后面没有歌了，从第一首开始
+			if(now+2>long){
+				this.setState({now: 0})
+			}else{
+				this.setState({now: now+1})
+			}
+		}
 	}
 
 
@@ -92,7 +101,7 @@ export default class Music extends Component<{}> {
 						       this.setState({time: data.currentTime});
 					       }}
 					       playInBackground={true}
-					       //onEnd={this.onEnd()}
+					       onEnd={this.onEnd()}
 					/>
 					<Head
 						name={this.state.musicList[this.state.now].songName}
