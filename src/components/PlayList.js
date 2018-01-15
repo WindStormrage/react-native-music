@@ -21,15 +21,21 @@ export default class Lrc extends Component<{}> {
 
 
 	render() {
-
+		const type = [
+			{img: require('./../static/loop.png'), text: '列表循环'},
+			{img: require('./../static/order.png'), text: '顺序播放'},
+			{img: require('./../static/random.png'), text: '随机播放'},
+			{img: require('./../static/single.png'), text: '单曲循环'}
+		];
 		return (
 			<View>
 				<View style={styles.title}>
 					<View style={{flexDirection: 'row',alignItems:'center'}}>
 						<Image
 							style={styles.type}
-							source={require('./../static/order.png')}/>
-						<Text style={styles.titleType}>顺序播放（{this.props.musicList.length}）</Text>
+							source={type[this.props.nowType].img}
+						/>
+						<Text style={styles.titleType}>{type[this.props.nowType].text}（{this.props.musicList.length}）</Text>
 					</View>
 					<Image
 						style={styles.del}

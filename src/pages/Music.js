@@ -28,13 +28,8 @@ export default class Music extends Component<{}> {
 		isplay: false,
 		time: 0,
 		now: 0,
+		nowType: 0,
 		musicList: [
-			{
-				songName: '宠爱',
-				songAuthor: '小胖',
-				songUrl: 'http://mr3.doubanio.com/ac3a15091649c03c39e20cef9a6f2eb0/0/fm/song/p1380679_128k.mp4',
-				time: '4:00'
-			},
 			{
 				songName: '风继续吹',
 				songAuthor: '张国荣',
@@ -49,7 +44,6 @@ export default class Music extends Component<{}> {
 				time: '3:50'
 
 			}
-
 		]
 	};
 
@@ -76,16 +70,33 @@ export default class Music extends Component<{}> {
 	}
 	//当视频播放完毕后的回调
 	onEnd(){
-		//顺序播放
 		let now = this.state.now;
 		let long = this.state.musicList.length;
+		let type = this.state.nowType;
 		//如果播放完了
 		if(this.state.time >= toInt(this.state.musicList[now].time)){
-			//后面没有歌了，从第一首开始
-			if(now+2>long){
-				this.setState({now: 0})
-			}else{
-				this.setState({now: now+1})
+			//列表循环
+			if(type === 0){
+				//后面没有歌了，从第一首开始
+				if(now+2>long){
+					this.setState({now: 0})
+				}else{
+					this.setState({now: now+1})
+				}
+				//顺序播放
+			}else	if(type === 1){
+				//后面没有歌了，就不播放了
+				if(now+2>long){
+
+				}else{
+					this.setState({now: now+1})
+				}
+				//随机播放
+			}else if(type === 2){
+				this.setState({now: parseInt(Math.random()*(long-1))})
+				//单曲循环
+			}else if(type === 3){
+				this.setState({now: now})
 			}
 		}
 	}
@@ -108,6 +119,15 @@ export default class Music extends Component<{}> {
 			that.setState({now: long-1})
 		}else{
 			that.setState({now: now-1})
+		}
+	}
+
+	onType(that){
+		let nowType = that.state.nowType;
+		if(nowType > 2){
+			that.setState({nowType: 0});
+		}else{
+			that.setState({nowType: nowType+1});
 		}
 	}
 
@@ -139,11 +159,14 @@ export default class Music extends Component<{}> {
 						setTime={this.setTime}
 						onNext={this.onNext}
 						onPrevious={this.onPrevious}
+						onType={this.onType}
+						nowType={this.state.nowType}
 						that={this}
 					/>
 					<PlayList
 						musicList={this.state.musicList}
 						onSetNow={this.setNow}
+						nowType={this.state.nowType}
 						that={this}
 					/>
 				</View>

@@ -20,6 +20,12 @@ import {toTime, toInt} from "./../util/HandlingTime.js"
 export default class MusicPlay extends Component<{}> {
 
 	render() {
+		const type = [
+			require('./../static/loop.png'),
+			require('./../static/order.png'),
+			require('./../static/random.png'),
+			require('./../static/single.png')
+		];
 		return (
 			<View style={main}>
 				<View style={progress}>
@@ -43,10 +49,15 @@ export default class MusicPlay extends Component<{}> {
 				</View>
 				<View style={component}>
 					{/*播放样式*/}
-					<Image
-						style={image}
-						source={require('./../static/order.png')}
-					/>
+					<TouchableOpacity
+						onPress={()=>{
+							this.props.onType(this.props.that)
+						}}>
+						<Image
+							style={image}
+							source={type[this.props.nowType]}
+						/>
+					</TouchableOpacity>
 					{/*前一首*/}
 					<TouchableOpacity
 						onPress={()=>{
@@ -126,4 +137,4 @@ const component = {
 const image = {
 	height: getHeight(40),
 	width: getWidth(40)
-}
+};
