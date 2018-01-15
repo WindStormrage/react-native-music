@@ -42,14 +42,22 @@ export default class MusicPlay extends Component<{}> {
 					<Text>{this.props.allTime}</Text>
 				</View>
 				<View style={component}>
+					{/*播放样式*/}
 					<Image
 						style={image}
 						source={require('./../static/order.png')}
 					/>
-					<Image
-						style={image}
-						source={require('./../static/previous.png')}
-					/>
+					{/*前一首*/}
+					<TouchableOpacity
+						onPress={()=>{
+							this.props.onPrevious(this.props.that)
+						}}>
+						<Image
+							style={image}
+							source={require('./../static/previous.png')}
+						/>
+					</TouchableOpacity>
+					{/*开始暂停*/}
 					<TouchableOpacity
 						onPress={()=>{
 							let a = !this.props.isplay;
@@ -60,10 +68,17 @@ export default class MusicPlay extends Component<{}> {
 							source={this.props.isplay?require('./../static/play.png'):require('./../static/start.png')}
 						/>
 					</TouchableOpacity>
-					<Image
-						style={image}
-						source={require('./../static/next.png')}
-					/>
+					{/*下一首*/}
+					<TouchableOpacity
+						onPress={()=>{
+							this.props.onNext(this.props.that)
+						}}>
+						<Image
+							style={image}
+							source={require('./../static/next.png')}
+						/>
+					</TouchableOpacity>
+					{/*播放列表*/}
 					<Image
 						style={image}
 						source={require('./../static/list.png')}

@@ -29,7 +29,7 @@ export default class Lrc extends Component<{}> {
 						<Image
 							style={styles.type}
 							source={require('./../static/order.png')}/>
-						<Text style={styles.titleType}>顺序播放（2）</Text>
+						<Text style={styles.titleType}>顺序播放（{this.props.musicList.length}）</Text>
 					</View>
 					<Image
 						style={styles.del}

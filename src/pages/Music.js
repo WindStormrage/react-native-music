@@ -30,12 +30,6 @@ export default class Music extends Component<{}> {
 		now: 0,
 		musicList: [
 			{
-				songName: 'Forever Love',
-				songAuthor: 'guanmac',
-				songUrl: 'http://mr3.doubanio.com/90c83ceac299f35c1865cb475b7cdad8/0/fm/song/p771299_128k.mp4',
-				time: '9:34'
-			},
-			{
 				songName: '宠爱',
 				songAuthor: '小胖',
 				songUrl: 'http://mr3.doubanio.com/ac3a15091649c03c39e20cef9a6f2eb0/0/fm/song/p1380679_128k.mp4',
@@ -47,7 +41,15 @@ export default class Music extends Component<{}> {
 				songUrl: 'http://mr3.doubanio.com/a0218d365b0a6b24d427fbc3f3a5b4e4/1/fm/song/p1563358_128k.mp4',
 				time: '4:02'
 
+			},
+			{
+				songName: '说散就散',
+				songAuthor: 'JC',
+				songUrl: 'http://gss0.bdstatic.com/y0s1hSulBw92lNKgpU_Z2jR7b2w6buu/data2/music/927be387c6bb7c9a1a4b33321b598012/543204747/543204191169200128.mp3?xcode=a373b7c823a9e69c180b9e6dd2675aac',
+				time: '3:50'
+
 			}
+
 		]
 	};
 
@@ -78,7 +80,7 @@ export default class Music extends Component<{}> {
 		let now = this.state.now;
 		let long = this.state.musicList.length;
 		//如果播放完了
-		if(this.state.time >= toInt(this.state.musicList[this.state.now].time)){
+		if(this.state.time >= toInt(this.state.musicList[now].time)){
 			//后面没有歌了，从第一首开始
 			if(now+2>long){
 				this.setState({now: 0})
@@ -88,6 +90,26 @@ export default class Music extends Component<{}> {
 		}
 	}
 
+	//点击下一首
+	onNext(that){
+		let now = that.state.now;
+		let long = that.state.musicList.length;
+		if(now+2>long){
+			that.setState({now: 0})
+		}else{
+			that.setState({now: now+1})
+		}
+	}
+	//点击上一首
+	onPrevious(that){
+		let now = that.state.now;
+		let long = that.state.musicList.length;
+		if(now===0){
+			that.setState({now: long-1})
+		}else{
+			that.setState({now: now-1})
+		}
+	}
 
 	render() {
 		return (
@@ -115,6 +137,9 @@ export default class Music extends Component<{}> {
 						time={this.state.time}
 						allTime={this.state.musicList[this.state.now].time}
 						setTime={this.setTime}
+						onNext={this.onNext}
+						onPrevious={this.onPrevious}
+						that={this}
 					/>
 					<PlayList
 						musicList={this.state.musicList}
