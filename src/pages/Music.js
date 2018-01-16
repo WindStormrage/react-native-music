@@ -138,7 +138,7 @@ export default class Music extends Component<{}> {
 		}
 	}
 
-	//点击列表
+	//点击列表//显示和隐藏设置
 	onList(that){
 		let showPoster= that.state.showPoster;
 		let	showLrc= that.state.showLrc;
@@ -153,8 +153,6 @@ export default class Music extends Component<{}> {
 
 	render() {
 
-		//var Poster = this.state.showPoster ? <Poster /> : null;
-		//var Lrc = this.state.showLrc ? <Lrc /> : null;
 		var v = this.state.show ? <Text>待显示的内容</Text> : null;    // 菜单
 
 
