@@ -37,19 +37,89 @@ export default class Music extends Component<{}> {
 		show: true,
 		musicList: [
 			{
-				songName: '风继续吹',
-				songAuthor: '张国荣',
-				songUrl: 'http://mr3.doubanio.com/a0218d365b0a6b24d427fbc3f3a5b4e4/1/fm/song/p1563358_128k.mp4',
-				time: '4:02'
-
+				songName: '成名在望',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/chengminzaiwang.mp3',
+				time: '5:07'
 			},
 			{
-				songName: '说散就散',
-				songAuthor: 'JC',
-				songUrl: 'http://gss0.bdstatic.com/y0s1hSulBw92lNKgpU_Z2jR7b2w6buu/data2/music/927be387c6bb7c9a1a4b33321b598012/543204747/543204191169200128.mp3?xcode=a373b7c823a9e69c180b9e6dd2675aac',
-				time: '3:50'
-
-			}
+				songName: '好好',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/haohao.mp3',
+				time: '3:18'
+			},
+			{
+				songName: '后来的我们',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/houlaidewomen.mp3',
+				time: '5:46'
+			},
+			{
+				songName: '你说那C和弦就是...',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/nishuo.mp3',
+				time: '2:16'
+			},
+			{
+				songName: '动物派对',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/dongwupaidui.mp3',
+				time: '4:10'
+			},
+			{
+				songName: '人生有限公司',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/renshengyouxiangongsi.mp3',
+				time: '3:37'
+			},
+			{
+				songName: '任意门',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/renyimen.mp3',
+				time: '4:32'
+			},
+			{
+				songName: '如果我们不曾相遇',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/ruguo.mp3',
+				time: '3:21'
+			},
+			{
+				songName: '少年他的奇幻漂流',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/shaonian.mp3',
+				time: '4:35'
+			},
+			{
+				songName: '顽固',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/wangu.mp3',
+				time: '4:24'
+			},
+			{
+				songName: '兄弟',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/xiongdi.mp3',
+				time: '4:08'
+			},
+			{
+				songName: '终于结束的起点',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/zhongyu.mp3',
+				time: '5:06'
+			},
+			{
+				songName: '转眼',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/zhuanyan.mp3',
+				time: '6:07'
+			},
+			{
+				songName: '最好的一天',
+				songAuthor: '五月天',
+				songUrl: 'http://www.xiedashuaige.cn:3000/music/zuihaodeyitian.mp3',
+				time: '4:02'
+			},
 		]
 	};
 
